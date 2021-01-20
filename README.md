@@ -53,6 +53,11 @@ BUG FIXES
 **22/09/2020**
 Minor bug fixes.
 
+
+CONTACT INFORMATION
+--------------------------------------------------------------------------------
+If you have any questions, feedback or if you experience any bugs or issues when running the program, feel free to contact me at stadragondev@gmail.com.
+
 LICENSE
 --------------------------------------------------------------------------------
 Please view LICENSE.md
