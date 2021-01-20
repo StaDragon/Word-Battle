@@ -70,7 +70,7 @@ BUG FIXES
 CONTACT INFORMATION
 --------------------------------------------------------------------------------
 If you have any questions, feedback or if you experience any bugs or issues when
-running the program, feel free to contact me at jorleef@gmail.com
+running the program, feel free to contact me at stadragondev@gmail.com
 
 LICENSE
 --------------------------------------------------------------------------------
