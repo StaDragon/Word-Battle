@@ -20,9 +20,8 @@ To begin playing the game, click on the run Word Battle.bat file and the game wi
 Depending on your Python verion, you may run the program by clicking on the py file directly.
 
 
-CHANGES FROM V1 TO V2
+CHANGES FROM V1 TO V2 **28/12/2020**
 --------------------------------------------------------------------------------
-**28/12/2020**
 The game engine has been overhauled.<br />
 All the text in the game is now more brighter.<br />
 As multi-language is no longer supported, the text file "Language" is renamed to "English".<br />
@@ -34,9 +33,8 @@ There is now a comma between the words used.<br />
 The metadata of .wbr files has changed and now has basic encryption to make its content less accessible.
 
 
-NEW IN V2
+NEW IN V2 **28/12/2020**
 --------------------------------------------------------------------------------
-**28/12/2020**
 Game duration is now displayed at the end of the games and during the replays.<br />
 You can play against more than one computer player.<br />
 You can watch more than two computer players playing against each other.<br />
