@@ -1,4 +1,4 @@
-# Word Battle v2
+# Word Battle v2.1
 INTRODUCTION
 --------------------------------------------------------------------------------
 Word Battle is a strategic word game situated around two or more players playing on a square board of arbitrary size between 3 and 15 with the objective of disabling every player from placing a word down onto the board to be the last player standing in order to win the game.
@@ -20,7 +20,7 @@ To begin playing the game, click on the run Word Battle.bat file and the game wi
 Depending on your Python verion, you may run the program by clicking on the py file directly.
 
 
-CHANGES:
+CHANGES FROM V1 TO V2
 --------------------------------------------------------------------------------
 The game engine has been overhauled.<br />
 All the text in the game is now more brighter.<br />
@@ -33,7 +33,7 @@ There is now a comma between the words used.<br />
 The metadata of .wbr files has changed and now has basic encryption to make its content less accessible.
 
 
-NEW:
+NEW IN V2
 --------------------------------------------------------------------------------
 Game duration is now displayed at the end of the games and during the replays.<br />
 You can play against more than one computer player.<br />
@@ -42,7 +42,12 @@ Each computer player now have their own difficulty setting and their own vocabul
 You can now view the game from the computer player's perspective by uncommenting the self.turn_visualisation() code in the Agent class under the play method.<br />
 
 
-NOTES:
+NEW V2.1
+--------------------------------------------------------------------------------
+Board UI has been improved.
+
+
+NOTES
 --------------------------------------------------------------------------------
 Do not use the "Language" text file as it can no longer be read by the game, use the "English" text file instead.<br />
 Do not open old .wbr files as they can no longer be read by the game.
