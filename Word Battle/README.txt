@@ -65,7 +65,7 @@ Do not open old .wbr files as they can no longer be read by the game.
 
 NEW V2.1
 --------------------------------------------------------------------------------
-Board UI has been improved
+Board UI has been improved.
 
 BUG FIXES
 --------------------------------------------------------------------------------
