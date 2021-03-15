@@ -1224,7 +1224,7 @@ class Agent:
 
             self.make_decision()
 
-        self.turn_visualisation()
+        # self.turn_visualisation()
 
     def debugger(self) -> None:
         """View the values contained within the agent."""
