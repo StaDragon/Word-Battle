@@ -22,6 +22,7 @@ Depending on your Python verion, you may run the program by clicking on the py f
 
 CHANGES FROM V1 TO V2
 --------------------------------------------------------------------------------
+**28/12/2020**
 The game engine has been overhauled.<br />
 All the text in the game is now more brighter.<br />
 As multi-language is no longer supported, the text file "Language" is renamed to "English".<br />
@@ -35,6 +36,7 @@ The metadata of .wbr files has changed and now has basic encryption to make its 
 
 NEW IN V2
 --------------------------------------------------------------------------------
+**28/12/2020**
 Game duration is now displayed at the end of the games and during the replays.<br />
 You can play against more than one computer player.<br />
 You can watch more than two computer players playing against each other.<br />
@@ -42,15 +44,16 @@ Each computer player now have their own difficulty setting and their own vocabul
 You can now view the game from the computer player's perspective by uncommenting the self.turn_visualisation() code in the Agent class under the play method.<br />
 
 
-UPDATE V2.1
---------------------------------------------------------------------------------
-Board UI has been improved.
-
-
 NOTES
 --------------------------------------------------------------------------------
 Do not use the "Language" text file as it can no longer be read by the game, use the "English" text file instead.<br />
 Do not open old .wbr files as they can no longer be read by the game.
+
+
+UPDATE V2.1
+--------------------------------------------------------------------------------
+**15/03/2021**
+Board UI has been improved.
 
 
 BUG FIXES
