@@ -33,6 +33,7 @@ directly.
 
 CHANGES FROM V1 TO V2
 --------------------------------------------------------------------------------
+28/12/2020
 The game engine has been overhauled.
 All the text in the game is now more brighter
 As multi-language is no longer supported, the text file "Language" is renamed to "English".
@@ -49,6 +50,7 @@ accessible.
 
 NEW IN V2
 --------------------------------------------------------------------------------
+28/12/2020
 Game duration is now displayed at the end of the games and during the replays.
 You can now play against more than one computer player.
 You can now watch more than two computer players playing against each other.
@@ -63,9 +65,9 @@ Do not use the "Language" text file as it can no longer be read by the game, use
 text file instead.
 Do not open old .wbr files as they can no longer be read by the game.
 
-NEW V2.1
+UPDATE V2.1
 --------------------------------------------------------------------------------
-Board UI has been improved.
+15/03/2021 Board UI has been improved.
 
 BUG FIXES
 --------------------------------------------------------------------------------
