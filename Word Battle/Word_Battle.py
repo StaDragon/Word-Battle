@@ -5,7 +5,7 @@
 
 __all__ = ["__title__", "__version__", "__author__", "__license__", "__copyright__"]
 __title__ = "Word Battle"
-__version__ = "2"
+__version__ = "2.1"
 __author__ = "Jordan Memphis Leef"
 __license__ = "Freeware"
 __copyright__ = "Copyright (C) Jordan Memphis Leef"
@@ -279,6 +279,7 @@ def game_manual() -> None:
         for path in b.paths_full:
             for coord in path:
                 temp_board[coord] = b.matrix[coord]
+                temp_board[coord] = "•"
                 temp_colour_map[coord] = "GREEN"
                 temp_board[path[-1]] = str(end_path_numbering)
             end_path_numbering += 1
@@ -297,6 +298,7 @@ def game_manual() -> None:
 
         for coord in b.paths_full[path_number - 1]:
             temp_board[coord] = b.matrix[coord]
+            temp_board[coord] = "•"
             temp_colour_map[coord] = "GREEN"
 
         temp_colour_map[b.starting_position] = "YELLOW"
@@ -336,7 +338,7 @@ def game_manual() -> None:
         print("10. Words cannot be used more than once.")
         print("11. Words must be spelt in order.")
         print("12. One-letter words are illegal due to violating rule 5.")
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print("-----------------------------------------------------------------------------------------------------<page 4>------------------------------------------------------------------------------------------------------")
         user_input = input("                                                                      Press any key to continue to next page. Type 0 to go back to main menu: ")
 
@@ -351,16 +353,14 @@ def game_manual() -> None:
         heading("Gameplay (cont.)")
         print("For example: Starting position at a (1 1).\nPath Number: 1")
         display_selected_path(board_length, (1, 1), 1)
-        print("If you want to select another starting position, type 4.\n")
-        print("Then you can place down a word that has the same length as the path selected.Remember to include letters from the path into your word if any.")
+        print("If you want to select another starting position, type 4. If you want to select another starting position, type 1.")
+        print("Then you can place down a word that has the same length as the path selected. Remember to include letters from the path into your word if any. The input is not case sensitive.")
         print("\nFor example: Path number 1 selected.")
-        word = "EXAMPLE"
+        word = "WORDS"
         print(f"Enter word with length of {board_length}: {word}")
         display_placed_word(board_length, (1, 1), 1, word)
-        print("If you want to select another starting position, type 1.\nNote: the input is not case sensitive.")
         print("\nWinning:")
-        print("To win the game, the opponent(s) must resign.")
-        print("This gives an indication that they cannot find a word to place down.")
+        print("To win the game, the opponent(s) must resign. This gives an indication that they cannot find a word to place down.")
         print("\nDraws:")
         print("If there are not available spaces left on the board, the game ends in a draw.")
         print("\nResigning the Game:")
@@ -388,7 +388,7 @@ def game_manual() -> None:
             b.colour_map[i, board_length - 1] = colour
             b.colour_map[board_length - 1, i] = colour
 
-        b.display_board()
+
         print(f"Select an edge or corner (coloured {colour.lower()}) and type the coordinates associated with it to select a start position.")
         print(f"Only the cells coloured {colour.lower()} are valid starting positions.")
         print("\nFor example: Starting position at a corner.")
@@ -398,6 +398,7 @@ def game_manual() -> None:
         print("Starting Position: 3 1")
         display_paths(board_length, (3, 1))
         print("Then select a path by typing the corresponding number at the end of the path.")
+        print("\n\n\n\n\n\n")
         print("-----------------------------------------------------------------------------------------------------<page 2>------------------------------------------------------------------------------------------------------")
         user_input = input("                                                                      Press any key to continue to next page. Type 0 to go back to main menu: ")
 
@@ -423,7 +424,7 @@ def game_manual() -> None:
         heading("Gameplay")
         print("Overview:")
         b = Board()
-        board_length = 7
+        board_length = 5
         b.create_board(board_length)
         b.display_board()
         print(f"This manual will use an {board_length}x{board_length} board to illustrate gameplay.")
@@ -754,8 +755,8 @@ class Board:
                 for coord in path:
                     temp_colour_map[coord] = "GREEN"
 
-                    # Labelling the succeeding position with empty string
-                    temp_board[coord] = " "
+                    # Labelling the succeeding position with an dot
+                    temp_board[coord] = "•"
 
                 # Labelling the end positions with an integer to indicate selection number
                 temp_board[path[-1]] = str(end_path_numbering)
@@ -806,7 +807,11 @@ class Board:
 
         # Labelling each path with its corresponding character and assign each coordinate with its colour
         for coord in self.selected_path:
-            temp_board[coord] = self.matrix[coord]
+            if self.matrix[coord] == " ":
+                temp_board[coord] = "•"
+            else:
+                temp_board[coord] = self.matrix[coord]
+
             temp_colour_map[coord] = "GREEN"
 
         # Assign the first cell with its colour
@@ -846,7 +851,7 @@ class Board:
             else:
                 print(f"{self.previous_player} placed down {self.word}")
 
-    def display_board(self, board=None, colour_map=None, get_str_board=False) -> int:
+    def display_board(self, board=None, colour_map=None, get_str_board=False, computer_player=False) -> int:
         """Display the board."""
         def chunks(data: Dict[Tuple[int, int], str], SIZE=10000) -> Generator[Dict[Tuple[int, int], str], any, None]:
             """Divide the data into chunks."""
@@ -869,6 +874,12 @@ class Board:
             for coord in self.previous_selected_path:
                 self.colour_map[coord] = "CYAN"
 
+                if computer_player:
+                    self.colour_map[coord] = "GREEN"
+
+            if computer_player:
+                self.colour_map[self.previous_selected_path[0]] = "YELLOW"
+
         # Create a list of chunks
         chunks_list = []
 
@@ -882,36 +893,59 @@ class Board:
 
         # Create representation of the board
         str_board = Fore.WHITE + Style.BRIGHT + " "
+        str_board += " "
 
         # Labelling top columns
         for column_number in range(self.length):
-            if column_number < 10:
+            if column_number < 9:
                 str_board += f"   {column_number + 1}"
             else:
                 str_board += f"  {column_number + 1}"
 
+        str_board +="\n   ┌───┬─"
+
+        for _ in range(self.length - 2):
+            str_board+= "──┬─"
+
+        str_board += "──┐\n"
+
         # Labelling left rows
-        str_board += "\n"
+        lines = 0
 
         for chunk in chunks_list:
             if chunks_list.index(chunk) < 9:
-                str_board += f" {str(chunks_list.index(chunk) + 1)}"
+                str_board += f"  {str(chunks_list.index(chunk) + 1)}"
             else:
-                str_board += str(chunks_list.index(chunk) + 1)
+                str_board += f" {str(chunks_list.index(chunk) + 1)}"
+
 
             # Assign each string to its corresponding colour depending on the coordinates
             for coord, colour in chunk.items():
                 set_colour = getattr(Fore, colour)
-                str_board += set_colour + f" [{board[coord]}]" + Fore.WHITE
+                str_board += Fore.WHITE + "│" + set_colour + f" {board[coord]} " + Fore.WHITE
+
 
             # Labelling right rows
-            str_board += f" {str(chunks_list.index(chunk) + 1)}\n"
+            str_board += f"│{str(chunks_list.index(chunk) + 1)}\n   ├─"
+            for _ in range(self.length - 1):
+                str_board += "──┼─"
+
+            if lines < self.length - 1:
+                str_board += "──┤\n"
+                lines += 1
+            else:
+                str_board += "\r"
 
         # Labelling bottom columns
-        str_board += " "
+        str_board +="   └───┴─"
+
+        for _ in range(self.length - 2):
+            str_board+= "──┴─"
+
+        str_board += "──┘\n  "
 
         for column_number in range(self.length):
-            if column_number < 10:
+            if column_number < 9:
                 str_board += f"   {column_number + 1}"
             else:
                 str_board += f"  {column_number + 1}"
@@ -1190,7 +1224,7 @@ class Agent:
 
             self.make_decision()
 
-        # self.turn_visualisation()
+        self.turn_visualisation()
 
     def debugger(self) -> None:
         """View the values contained within the agent."""
@@ -1215,10 +1249,19 @@ class Agent:
 
         for coord in self.considered_starting_position:
             self.analyse_board.starting_position = coord
+
+            if self.analyse_board.matrix[coord] == " ":
+                self.analyse_board.matrix[coord] = "•"
+
             temp_colour_map[coord] = "YELLOW"
 
         print("Considered Starting Positions:", end='')
         self.analyse_board.display_board(None, temp_colour_map)
+
+        for coord in self.considered_starting_position:
+            if self.analyse_board.matrix[coord] == "•":
+                self.analyse_board.matrix[coord] = " "
+
         print("Word(s) Used: " + Fore.RED + Style.BRIGHT + ', '.join(self.analyse_used_words))
 
         if self.draw_detected:
@@ -1232,7 +1275,7 @@ class Agent:
                 starting_position = None
                 word = None
 
-        print(Fore.WHITE + Style.BRIGHT + f"\nWord Placed At {starting_position}: {word}")
+        print(Fore.WHITE + Style.BRIGHT + f"\nPlacing Word At {starting_position}: {word}")
 
         try:
             self.analyse_board.selected_path = self.final_selected_path
@@ -1240,7 +1283,7 @@ class Agent:
         except TypeError:
             pass
 
-        self.analyse_board.display_board()
+        self.analyse_board.display_board(None, None, False, True)
         print("Press any key to continue...")
         msvcrt.getch()
 
@@ -1726,13 +1769,11 @@ def main():
         global game_word_list, vocab_1, vocab_2
         clear_screen(0)
         print(Fore.WHITE + Style.BRIGHT + f"{'-' * 32}\n{__title__} v{__version__}\nWritten in Python {PY_VERSION}\nDeveloped by {__author__}\n{'-' * 32}")
-        print("[1] Play vs human")
-        print("[2] Play vs computer")
-        print("[3] Watch computers Play")
-        print("[4] Watch replays")
-        print("[5] Game manual")
-        print("[6] View README file")
-        print("[7] Exit")
+        menu_item = ["Play vs human", "Play vs computer", "Watch computers play", "Watch replays", "Game manual", "View README file", "Exit"]
+
+        for i in menu_item:
+            print([menu_item.index(i) + 1], i)
+
         selection = input("\nSelection: ")
 
         if selection == "1":

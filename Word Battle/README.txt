@@ -1,4 +1,4 @@
-WORD BATTLE v2
+WORD BATTLE v2.1
 --------------------------------------------------------------------------------
 Thank you for downloading this game!
 
@@ -31,7 +31,7 @@ opened in an command prompt.
 Depending on your Python verion, you may run the program by clicking on the py file
 directly.
 
-CHANGES:
+CHANGES FROM V1 TO V2
 --------------------------------------------------------------------------------
 The game engine has been overhauled.
 All the text in the game is now more brighter
@@ -47,7 +47,7 @@ There is now a comma between the words used.
 The metadata of .wbr files has changed and now has basic encryption to make its content less
 accessible.
 
-NEW:
+NEW IN V2
 --------------------------------------------------------------------------------
 Game duration is now displayed at the end of the games and during the replays.
 You can now play against more than one computer player.
@@ -57,20 +57,25 @@ Each computer player now have their own difficulty setting and their own vocabul
 You can now view the game from the computer player's perspective by uncommenting
 the self.turn_visualisation() code in the Agent class under the play method.
 
-NOTES:
+NOTES
 --------------------------------------------------------------------------------
 Do not use the "Language" text file as it can no longer be read by the game, use the "English"
 text file instead.
 Do not open old .wbr files as they can no longer be read by the game.
 
+NEW V2.1
+--------------------------------------------------------------------------------
+Board UI has been improved
+
 BUG FIXES
 --------------------------------------------------------------------------------
 22/09/2020: Minor bug fixes.
 
+
 CONTACT INFORMATION
 --------------------------------------------------------------------------------
 If you have any questions, feedback or if you experience any bugs or issues when
-running the program, feel free to contact me at stadragondev@gmail.com
+running the program, feel free to contact me at jorleef@gmail.com
 
 LICENSE
 --------------------------------------------------------------------------------
