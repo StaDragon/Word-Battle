@@ -42,7 +42,7 @@ Each computer player now have their own difficulty setting and their own vocabul
 You can now view the game from the computer player's perspective by uncommenting the self.turn_visualisation() code in the Agent class under the play method.<br />
 
 
-NEW V2.1
+UPDATE V2.1
 --------------------------------------------------------------------------------
 Board UI has been improved.
 
