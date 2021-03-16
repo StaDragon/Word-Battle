@@ -893,7 +893,7 @@ class Board:
 
         # Create representation of the board
         str_board = Fore.WHITE + Style.BRIGHT + " "
-        str_board += " "
+        str_board += "  "
 
         # Labelling top columns
         for column_number in range(self.length):
@@ -902,7 +902,7 @@ class Board:
             else:
                 str_board += f"  {column_number + 1}"
 
-        str_board +="\n   ┌───┬─"
+        str_board +="\n    ┌───┬─"
 
         for _ in range(self.length - 2):
             str_board+= "──┬─"
@@ -914,19 +914,18 @@ class Board:
 
         for chunk in chunks_list:
             if chunks_list.index(chunk) < 9:
-                str_board += f"  {str(chunks_list.index(chunk) + 1)}"
+                str_board += f"  {str(chunks_list.index(chunk) + 1)} "
             else:
-                str_board += f" {str(chunks_list.index(chunk) + 1)}"
-
+                str_board += f" {str(chunks_list.index(chunk) + 1)} "
 
             # Assign each string to its corresponding colour depending on the coordinates
             for coord, colour in chunk.items():
                 set_colour = getattr(Fore, colour)
                 str_board += Fore.WHITE + "│" + set_colour + f" {board[coord]} " + Fore.WHITE
 
-
             # Labelling right rows
-            str_board += f"│{str(chunks_list.index(chunk) + 1)}\n   ├─"
+            str_board += f"│ {str(chunks_list.index(chunk) + 1)}\n    ├─"
+
             for _ in range(self.length - 1):
                 str_board += "──┼─"
 
@@ -937,7 +936,7 @@ class Board:
                 str_board += "\r"
 
         # Labelling bottom columns
-        str_board +="   └───┴─"
+        str_board +="    └───┴─"
 
         for _ in range(self.length - 2):
             str_board+= "──┴─"
@@ -946,9 +945,9 @@ class Board:
 
         for column_number in range(self.length):
             if column_number < 9:
-                str_board += f"   {column_number + 1}"
+                str_board += f"    {column_number + 1}"
             else:
-                str_board += f"  {column_number + 1}"
+                str_board += f"   {column_number + 1}"
 
         if get_str_board:
             return str_board
