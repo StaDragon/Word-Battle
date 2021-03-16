@@ -941,13 +941,13 @@ class Board:
         for _ in range(self.length - 2):
             str_board+= "──┴─"
 
-        str_board += "──┘\n  "
+        str_board += "──┘\n   "
 
         for column_number in range(self.length):
             if column_number < 9:
-                str_board += f"    {column_number + 1}"
-            else:
                 str_board += f"   {column_number + 1}"
+            else:
+                str_board += f"  {column_number + 1}"
 
         if get_str_board:
             return str_board
